@@ -21,12 +21,25 @@ Notebook ini menyiapkan eksperimen transfer learning antara Swin Transformer (Ti
 > Notebook juga menjalankan `pip install timm seaborn scikit-learn psutil` pada sel pertama untuk memastikan dependensi utama tersedia. Langkah ini dapat dilewati jika Anda sudah menjalankan perintah `pip install -r requirements.txt`.
 
 ## Menjalankan Notebook
+
+### Menjalankan di Google Colab
 1. Buka [Google Colab](https://colab.research.google.com/), pilih *File → Upload Notebook* dan unggah `VisionTransformer_Comparison.ipynb`.
 2. Aktifkan runtime GPU melalui *Runtime → Change runtime type → GPU*.
 3. Eksekusi sel secara berurutan. Notebook terbagi menjadi tahap-tahap yang diberi judul (Instalasi, Import Library, Load Dataset, Visualisasi, Utility Model, Training, Evaluasi, Inferensi, Ringkasan, dan Ekspor JSON) sehingga mudah diikuti.
 4. Dataset CIFAR-10 akan otomatis diunduh oleh torchvision ke direktori kerja Colab (akan tersimpan di `/content/data/` selama sesi berlangsung). Pastikan runtime memiliki koneksi internet aktif.
 
-> Untuk eksekusi lokal, jalankan `jupyter notebook VisionTransformer_Comparison.ipynb` setelah memasang dependensi via `pip install -r requirements.txt`.
+### Menjalankan Secara Lokal
+1. (Opsional) Buat virtual environment, lalu aktifkan.
+2. Instal dependensi:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Jalankan Jupyter:
+   ```bash
+   jupyter notebook VisionTransformer_Comparison.ipynb
+   ```
+4. Jalankan sel dari atas ke bawah. Dataset akan diunduh otomatis ke folder `data/` di dalam repositori; koneksi internet diperlukan saat pertama kali.
+5. Jika menemui OOM di GPU lokal, turunkan `CONFIG["batch_size"]` atau gunakan resolusi yang lebih kecil.
 
 ### Catatan Pelaksanaan
 - Ubah nilai pada dictionary `CONFIG` (sel "Langkah 3") untuk menyesuaikan hyperparameter seperti ukuran batch, jumlah epoch, learning rate, atau jumlah gambar yang digunakan saat benchmarking inferensi.
